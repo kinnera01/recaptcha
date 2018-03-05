@@ -1,0 +1,47 @@
+
+<html>
+
+<head>
+    <title>Contact Form Tutorial by Bootstrapious.com</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,500' rel='stylesheet' type='text/css'>
+    <!-- <link href='custom.css' rel='stylesheet' type='text/css'> -->
+</head>
+<style>
+    msg-error {
+  color: #c65848;
+}
+.g-recaptcha.error {
+  border: solid 2px #c64848;
+  padding: .2em;
+  width: 19em;
+}
+</style>
+<body>
+        <span class="msg-error error"></span>
+        <div id="recaptcha" class="g-recaptcha" data-sitekey="6LcWe0oUAAAAACAVAOAySMg9_S2Ow5V8kanw0jes
+        "></div>       
+        <button class="btn" id="btn-validate">Validate reCAPTCHA</button>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+        <script src="https://www.google.com/recaptcha/api.js"></script>
+        <script>
+        $( '#btn-validate' ).click(function(){
+  var $captcha = $( '#recaptcha' ),
+      response = grecaptcha.getResponse();
+  
+  if (response.length === 0) {
+    $( '.msg-error').text( "reCAPTCHA is mandatory" );
+    if( !$captcha.hasClass( "error" ) ){
+      $captcha.addClass( "error" );
+    }
+  } else {
+    $( '.msg-error' ).text('');
+    $captcha.removeClass( "error" );
+    alert( 'reCAPTCHA marked' );
+  }
+})</script>
+</body>
+
+</html>
